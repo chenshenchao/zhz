@@ -14,5 +14,20 @@
             "zhz\\": "main"
         }
     },
-    "require": {}
+    "autoload-dev": {
+        "psr-4": {
+            "zhz\\": "test"
+        }
+    },
+    "require": {
+        "php": ">=7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.4"
+    },
+    "scripts": {
+        "test": [
+            "phpunit --bootstrap vendor/autoload.php --testdox test"
+        ]
+    }
 }

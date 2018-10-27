@@ -24,7 +24,7 @@ class Dictionary {
      * @param $lexeme 词素。
      */
     public function enter($lexeme) {
-        $count = preg_match_all('/\w/u', $word, $matches);
+        $count = preg_match_all('/\w/u', $lexeme, $matches);
         $arrow = &$this->all;
         foreach ($matches[0] as $word) {
             if (!key_exists($word, $arrow)) {
@@ -49,27 +49,10 @@ class Dictionary {
             if (isset($arrow[$word][self::KEY])) {
                 $result[$index] = join($lexeme);
             }
-            $word = $segmention[++$index];
+            $arrow = &$arrow[$word];
+            $word = $segmentions[++$index] ?? null;
         }
         return $result;
-    }
-
-    /**
-     * 查找最短词素。
-     * 
-     */
-    public function peek($segmentions, $index) {
-        $lexeme = [];
-        $arrow = &$this->all;
-        $word = $segmentions[$index];
-        while (key_exists($word, $arrow)) {
-            $lexeme[] = $word;
-            if (isset($arrow[$word][self::KEY])) {
-                return join($lexeme);
-            }
-            $word = $segmention[++$index];
-        }
-        return null;
     }
 
     /**
