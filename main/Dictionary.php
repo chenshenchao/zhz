@@ -1,12 +1,15 @@
-<?php namespace zhz;
+<?php
+
+namespace zhz;
 
 /**
  * 字典
  * 
  */
-class Dictionary {
-    private const KEY = 'zh';
-    private const TAG = 'z';
+class Dictionary
+{
+    private const KEY = 'zhz-key'; // 表示终结的键
+    private const TAG = 'zhz-tag'; // 表示终结的标
 
     private $all;
 
@@ -14,7 +17,8 @@ class Dictionary {
      * 构造子。
      * 
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->all = [];
     }
 
@@ -23,8 +27,9 @@ class Dictionary {
      * 
      * @param $lexeme 词素。
      */
-    public function enter($lexeme) {
-        $count = preg_match_all('/\w/u', $lexeme, $matches);
+    public function enter($lexeme)
+    {
+        preg_match_all('/\w/u', $lexeme, $matches);
         $arrow = &$this->all;
         foreach ($matches[0] as $word) {
             if (!key_exists($word, $arrow)) {
@@ -38,8 +43,12 @@ class Dictionary {
     /**
      * 查找词素。
      * 
+     * @param $segmentions 字符数组。
+     * @param $index 指定字符串开始位置。
+     * @return 可能的词素集。
      */
-    public function refer($segmentions, $index) {
+    public function refer($segmentions, $index)
+    {
         $result = [];
         $lexeme = [];
         $arrow = &$this->all;
@@ -60,7 +69,8 @@ class Dictionary {
      * 
      * @param string $path 读取路径。
      */
-    public function load($path) {
+    public function load($path)
+    {
         $raw = file_get_contents($path);
         $this->all = unserialize($raw);
     }
@@ -70,7 +80,8 @@ class Dictionary {
      * 
      * @param string $path 保存路径。
      */
-    public function save($path) {
+    public function save($path)
+    {
         $raw = serialize($this->all);
         file_put_contents($path, $raw);
     }

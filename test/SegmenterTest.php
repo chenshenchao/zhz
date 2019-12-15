@@ -1,15 +1,21 @@
-<?php namespace zhz;
+<?php
+
+namespace zhz;
 
 use PHPUnit\Framework\TestCase;
 
 /**
+ * 分词器测试
  * 
  */
-class SegmenterTest extends TestCase {
+class SegmenterTest extends TestCase
+{
     /**
+     * 测试分词
      * 
      */
-    public function testSegment() {
+    public function testSegment()
+    {
         $dictionary = new Dictionary;
         $dictionary->enter('中文');
         $dictionary->enter('分词');
@@ -19,6 +25,6 @@ class SegmenterTest extends TestCase {
         $dictionary->enter('单元测试');
         $segmenter = new Segmenter($dictionary);
         $result = $segmenter->segment('zhz中文分词单元测试');
-        $this->assertEquals($result, ['z','h','z','中文','分词','单元','测试']);
+        $this->assertEquals($result, ['z', 'h', 'z', '中文', '分词', '单元', '测试']);
     }
 }

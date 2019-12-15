@@ -1,15 +1,21 @@
-<?php namespace zhz;
+<?php
+
+namespace zhz;
 
 use PHPUnit\Framework\TestCase;
 
 /**
+ * 字典测试
  * 
  */
-class DictionaryTest extends TestCase {
+class DictionaryTest extends TestCase
+{
     /**
+     * 测试字典录入。
      * 
      */
-    public function testEnter() {
+    public function testEnter()
+    {
         $dictionary = new Dictionary;
         $dictionary->enter('中文');
         $dictionary->enter('分词');
