@@ -26,5 +26,6 @@ class Archive
      * @param $condition 条件
      */
     public function query($condition)
-    { }
+    {
+    }
 }

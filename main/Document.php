@@ -11,4 +11,7 @@ class Document
     /**
      * 
      */
+    public function save()
+    {
+    }
 }
