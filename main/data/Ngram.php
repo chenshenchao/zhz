@@ -1,6 +1,9 @@
-<?php namespace zhz\data;
+<?php
+
+namespace zhz\data;
 
 /**
+ * Ngram
  * 
  */
 class Ngram
@@ -8,6 +11,7 @@ class Ngram
     private $n;
 
     /**
+     * 设置每组切割字符个数。
      * 
      */
     public function __construct($n)
@@ -16,6 +20,7 @@ class Ngram
     }
 
     /**
+     * 切割字符串。
      * 
      */
     public function split($text)
