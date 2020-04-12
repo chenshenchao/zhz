@@ -6,7 +6,7 @@ namespace zhz;
  * 分词器
  * 
  */
-class Segmenter
+class Tokenizer
 {
     private $dictionary;
 
@@ -25,7 +25,7 @@ class Segmenter
      * 
      * @param $text 文本
      */
-    public function segment($text)
+    public function tokenize($text)
     {
         $result = [];
         $index = 0;
